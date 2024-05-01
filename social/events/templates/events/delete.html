@@ -1,0 +1,18 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+    <h1>Delete List</h1>
+    <div class="card" style="width: 550px; margin: 50px auto;">
+        <div class="card-header" style="text-align: center; width: 100%;">
+            <a href="{% url 'view-list' %}" class="btn btn-warning" style=" width: 100%;">Cancel</a>
+        </div>
+        <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <h4>Are your sure you want to delete Records?</h4>
+                <input class="btn btn-outline-danger" type="submit" value="Delete" style=" width: 100%;">
+            </form>
+          
+        </div>
+      </div>
+{% endblock %}

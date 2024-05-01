@@ -1,0 +1,58 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    
+    <div class="card" style="width: 500px; margin: auto; text-align: center;">
+        <div class="card-header">
+            <h1 class="text center">List of All Events</h1>
+        </div>
+        <div class="card-boby">
+          
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item"><a href="{% url 'add-user' %}" class="btn btn-success">Add Contact</a></li>
+                <li class="list-group-item"><a href="{% url 'view-list' %}" class="btn btn-success">View List Of Contact</a></li>
+
+                <nav class="navbar navbar-expand  " style="background-color: #f1a415; color: #fff; width: 40%; margin: auto; height: 40px; border-radius: 5px;">
+                    <div class="container-fluid">
+                      
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                         
+                
+                          {% if user.is_authenticated %}
+                          <li class="nav-item dropdown text-center">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Print Contact List
+                            </a>
+                            
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <li><a class="dropdown-item" href="{% url 'view-text' %}">Print Contact TextFile</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="{% url 'view-pdf' %}">Print Contact PDF</a></li>
+                            </ul>
+                          </li>
+                          {% endif %}
+                      </div>
+                    </div>
+                </nav>
+                
+            </ul>
+        </div>
+    </div>
+    {% else %}
+        <div class="card" style="width: 700px; margin: auto; text-align: center;">
+            <h1>Sorry You Must Be Logged In <br> To View This Page...</h1>
+            <a href="{% url 'login' %}" class="btn btn-info text-white">Login Here...</a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+

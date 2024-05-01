@@ -1,0 +1,48 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="box-content" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div class="right-side" style="width: 50%;">
+                <h1 style="color: green; font-size: 45px; font-weight: 700;">Social <span style="color: #ee8813;">ContactBook</span></h1>
+                <p style="font-weight: 700;">ContactBook helps you connect with friends and helps manage all your <br> contacts online in a secured way! <small>SignUp Now, It free and reliable!</small></p>
+                
+            </div>
+
+            <div class="card" style="width: 500px;  padding: 20px; margin-right: 150px; background-color: #eee; box-shadow: 0 5px 15px #888;">
+                <div class="card card-header">
+                    <h1 class="text-center">Login</h1>
+                </div>
+                <br>
+                
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label" style="text-align: left;">Username</label>
+                        <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label" style="text-align: left;">Password</label>
+                        <input type="password" class="form-control" name="password">
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-success" style="width: 100%;">
+                </form>
+                <br>
+                <div class="card card-header ">
+                    {% for msg in messages %}
+                        <p>{{msg}}</p>
+                    {% endfor %}
+                </div>
+                <br>
+                <p>Don't have an account? <a href="{%url 'register' %}"class="btn btn-warning btn-sm">Register</a></p>
+    
+            </div>
+        </div>
+       
+
+    
+{% endblock %}

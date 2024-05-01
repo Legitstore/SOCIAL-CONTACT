@@ -1,0 +1,40 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <table class="table text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone No.</th>
+                <th>Address</th>
+                <th>Relationship</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for list in lists %}
+                <tr>
+                    <td>{{list.firstname}}</td>
+                    <td>{{list.lastname}}</td>
+                    <td>{{list.email}}</td>
+                    <td>{{list.phone}}</td>
+                    <td>{{list.address}}</td>
+                    <td>{{list.relationship}}</td>
+                    {% if user.is_authenticated %}
+                    <td><a href="{% url 'update-user' list.id %}" class="btn btn-info btn-sm">Update</a></td>
+                    <td><a href="{% url 'delete-user' list.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="card" style="width: 700px; margin: auto; text-align: center;">
+            <h1>Sorry You Must Be Logged In <br> To View This Page...</h1>
+            <a href="{% url 'login' %}" class="btn btn-info text-white">Login Here...</a>
+        </div>
+    {% endif %}
+{% endblock %}

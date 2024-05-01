@@ -1,0 +1,27 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <div class="card" style="width: 600px; padding: 20px; margin: auto; background-color: #eee; box-shadow: 0 5px 15px #888;">
+        <div class="card card-header">
+            <h1 class="text-center">Add New Friends</h1>
+        </div>
+        <br>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+    
+            <input type="submit" class="btn btn-success" value="Submit" style="width: 100%;">
+        </form>
+    </div>
+    {% else %}
+    <div class="card" style="width: 700px; margin: auto; text-align: center;">
+        <h1>Sorry You Must Be Logged In <br> To View This Page...</h1>
+        <a href="{% url 'login' %}" class="btn btn-info text-white">Login Here...</a>
+    </div>
+    {% endif %}
+   
+{% endblock %}
+
+
+
